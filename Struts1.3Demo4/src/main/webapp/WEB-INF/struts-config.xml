@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+       "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+       "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+	<form-beans>
+		<form-bean name="loginForm"
+			type="info.java.tips.form.LoginForm" />
+		<form-bean name="welcomeForm"
+			type="info.java.tips.form.WelcomeForm" />
+		<form-bean name="registerForm"
+			type="info.java.tips.form.RegisterForm" />
+		<form-bean name="adminForm"
+			type="info.java.tips.form.AdminForm" />
+		<form-bean name="updateForm"
+			type="info.java.tips.form.UpdateForm" />
+		<form-bean name="createForm"
+			type="info.java.tips.form.CreateForm" />
+	</form-beans>
+
+	<action-mappings>
+		<action path="/login" name="loginForm"
+			type="info.java.tips.action.LoginAction" input="/login.jsp">
+			<forward name="admin" path="/admin.jsp" />
+			<forward name="success" path="/welcome.jsp" />
+			<forward name="reg" path="/register.jsp" />
+		</action>
+		<action path="/welcome" name="welcomeForm"
+			type="info.java.tips.action.WelcomeAction" input="/welcome.jsp">
+			<forward name="update" path="/webpage.jsp" />
+			<forward name="back" path="/login.jsp" />
+		</action>
+		<action path="/register" name="registerForm"
+			type="info.java.tips.action.RegisterAction" input="/register.jsp">
+			<forward name="success" path="/webpage.jsp" />
+			<forward name="back" path="/login.jsp" />
+		</action>
+		<action path="/admin" name="adminForm"
+			type="info.java.tips.action.AdminAction" input="/admin.jsp">
+			<forward name="create" path="/create.jsp" />
+			<forward name="back" path="/webpage.jsp" />
+			<forward name="delete" path="/admin.jsp" />
+			<forward name="update" path="/update.jsp" />
+		</action>
+		<action path="/update" name="updateForm"
+			type="info.java.tips.action.UpdateAction" input="/update.jsp">
+			<forward name="update" path="/admin.jsp" />
+			<forward name="back" path="/admin.jsp" />
+		</action>
+		<action path="/create" name="createForm"
+			type="info.java.tips.action.CreateAction" input="/create.jsp">
+			<forward name="success" path="/webpage.jsp" />
+			<forward name="back" path="/webpage.jsp" />
+		</action>
+	</action-mappings>
+
+	<message-resources
+		parameter="info.java.tips.i18n.MessageBundle" />
+</struts-config>
